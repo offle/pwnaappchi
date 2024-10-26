@@ -10,3 +10,5 @@ follow these steps for building (the whole project will follow here, but today o
 - Build the App and have fun :)
 
 Cheers
+
+https://buymeacoffee.com/offle
