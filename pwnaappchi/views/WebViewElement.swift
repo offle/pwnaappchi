@@ -48,15 +48,15 @@ struct WebViewElement: UIViewRepresentable {
         }
 
         func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-            print("Fehler beim Laden: \(error.localizedDescription)")
+            debugPrint("Error loading page: \(error.localizedDescription)")
         }
 
         func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-            print("Fehler beim Starten des Ladevorgangs: \(error.localizedDescription)")
+            debugPrint("Error starting the loading of the page: \(error.localizedDescription)")
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            print("Seite erfolgreich geladen.")
+            debugPrint("Page successfully loaded.")
         }
     }
 }

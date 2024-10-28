@@ -11,7 +11,7 @@ struct Utils {
         if let string = buffer.readString(length: buffer.readableBytes) {
             return string
         } else {
-            print("Error converting ByteBuffer to String")
+            debugPrint("Error converting ByteBuffer to String")
             return nil
         }
     }
@@ -39,10 +39,10 @@ struct Utils {
             do {
                 return try Data(contentsOf: fileURL)
             } catch {
-                print("Error loading JSON: \(error.localizedDescription)")
+                debugPrint("Error loading JSON: \(error.localizedDescription)")
             }
         } else {
-            print("Error loading File")
+            debugPrint("Error loading File")
         }
         return nil
     }
@@ -68,7 +68,7 @@ struct Utils {
         do {
             return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
         } catch {
-            print("Error parsing JSON: \(error.localizedDescription)")
+            debugPrint("Error parsing JSON: \(error.localizedDescription)")
             return nil
         }
     }

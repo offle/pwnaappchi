@@ -43,7 +43,7 @@ class PwnFileManager {
                     modDate = Date(timeIntervalSince1970: modDateUnixTimeStamp)
                     debugPrint("Datum: \(modDate)")
                 } else {
-                    print("Ungültiger Zeitstempel")
+                    debugPrint("Invalid Timestamp")
                 }
                 
                 debugPrint("Save \(file) local...")
@@ -144,7 +144,7 @@ class PwnFileManager {
                 }
             }
         } else {
-            print("Cannot read ByteBuffer")
+            debugPrint("Cannot read ByteBuffer")
         }
     }
     
@@ -173,7 +173,7 @@ class PwnFileManager {
                     pwnFiles.append(pwnfile)
                 }
             } catch {
-                print("Error fetching file information: \(error)")
+                debugPrint("Error fetching file information: \(error)")
             }
         }
         return pwnFiles

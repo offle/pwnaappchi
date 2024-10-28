@@ -145,7 +145,7 @@ struct ConnectionView: View {
                     totalFiles = total
                 }
             } catch {
-                print("Fehler beim Herunterladen: \(error.localizedDescription)")
+                debugPrint("Error downloading files: \(error.localizedDescription)")
             }
             downloadActive = false
             downloadTask = nil
