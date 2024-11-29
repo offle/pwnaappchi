@@ -24,6 +24,8 @@ struct WebViewElement: UIViewRepresentable {
     
     private func addBasicAuth(to request: inout URLRequest) {
         let credentials = "\(username):\(password)"
+        debugPrint("Loading Webview \(self.urlString) with Basic Auth Credentials: \(username):\(password)")
+
         if let credentialData = credentials.data(using: .utf8) {
             let base64Credentials = credentialData.base64EncodedString()
             request.setValue("Basic \(base64Credentials)", forHTTPHeaderField: "Authorization")
@@ -36,12 +38,13 @@ struct WebViewElement: UIViewRepresentable {
 
     class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
         var parent: WebViewElement
-
+        
         init(_ parent: WebViewElement) {
             self.parent = parent
         }
 
         func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+
             // Handle the Basic Auth challenge
             let credential = URLCredential(user: parent.username, password: parent.password, persistence: .forSession)
             completionHandler(.useCredential, credential)

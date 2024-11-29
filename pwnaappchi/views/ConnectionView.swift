@@ -59,7 +59,7 @@ struct ConnectionView: View {
                         let ip = UserDefaults.standard.string(forKey: "pwnIp") ?? "172.20.10.6"
                         let user = networkManager.webUiUser
                         let password = networkManager.webUiPassword
-                        
+
                         WebViewElement(urlString: "http://\(ip):8080", username: user, password: password, id: webViewID)
                             .id(webViewID)
                             .onAppear {

@@ -91,10 +91,10 @@ class NetworkManager: ObservableObject {
     }
     
     private func checkConnection() {
-        debugPrint("\(Date()) Checking connection...")
         let pwnIp = UserDefaults.standard.string(forKey: "pwnIp") ?? "172.20.10.6"
         let startTime = Date()
-        
+        debugPrint("\(Date()) Checking connection to \(pwnIp)...")
+
         let connection22Timeout = DispatchWorkItem {
             DispatchQueue.main.async {
                 self.latency = nil
@@ -210,7 +210,7 @@ class NetworkManager: ObservableObject {
             let linuxUser = UserDefaults.standard.string(forKey: "linuxUser") ?? "root"
             let linuxPassword = UserDefaults.standard.string(forKey: "linuxPassword") ?? "root"
             do {
-                debugPrint("Reading config.toml on \(pwnIp)")
+                debugPrint("Reading config.toml on \(pwnIp) with user \(linuxUser)")
                 let client = try await SSHClient.connect(
                     host: pwnIp,
                     authenticationMethod: .passwordBased(username: linuxUser, password: linuxPassword),
